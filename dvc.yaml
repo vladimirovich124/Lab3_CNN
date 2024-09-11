@@ -1,0 +1,34 @@
+stages:
+  download_data:
+    cmd: python download_data.py
+    deps:
+      - download_data.py
+      - config.py
+    params:
+      - download_data
+    outs:
+      - data/batches
+
+  train:
+    cmd: python train.py
+    deps:
+      - train.py
+      - data.py
+      - model.py
+      - config.py
+    params:
+      - train
+    outs:
+      - trained_model.pth
+
+  evaluate:
+    cmd: python evaluate.py
+    deps:
+      - evaluate.py
+      - data.py
+      - trained_model.pth
+      - config.py
+    params:
+      - evaluate
+    metrics:
+      - metrics.json

@@ -1,0 +1,16 @@
+download_data:
+  num_batches: 5
+  combination_method: "physical"
+  selected_batches: [1]
+
+train:
+  batch_size: 64
+  lr: 0.001
+  num_epochs: 10
+  train_val_split: 0.7
+
+evaluate:
+  batch_size: 64
+  model_path: "trained_model.pth"
+  data_dir: "data"
+  test_batch_dir: "data/batches/test_batch"
